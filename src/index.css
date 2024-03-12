@@ -1,1 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    margin: 0;
+    font-family: 'Madimi One', cursive;
+    background-color: darkorchid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('https://img.freepik.com/free-vector/dark-hexagonal-background-with-gradient-color_79603-1409.jpg?w=740&t=st=1710188670~exp=1710189270~hmac=fe2dfbaa59285a3f593b2e0a4374be022bbbd9916d879013045e4b2dcd76eb9c');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import appFirebase from '../credenciales'
 import {getAuth, signOut} from 'firebase/auth'
-
+import './Home.css'; 
 import {getFirestore, collection, addDoc, getDocs, doc, deleteDoc, getDoc, setDoc} from 'firebase/firestore'
 
 const auth = getAuth(appFirebase)
@@ -23,6 +23,7 @@ const Home = ({correoUsuario}) => {
     //variables de estado
     const [user, setUser] = useState(valorInicial)
     const [lista, setLista] = useState([])
+    const [subId, setSubId] = useState('')
 
     //funciones para capturar inputs
     const capturarInputs = (e) =>{
@@ -71,6 +72,36 @@ const Home = ({correoUsuario}) => {
 
     }, [lista])
 
+    //funcion para eliminar el club
+    const deleteClub = async(id)=>{
+        await deleteDoc(doc(db, 'clubes', id))
+    }
+
+    
+    const getOne = async(id) =>{
+        try{
+            const docRef = doc(db, "clubes", id)
+            const docSnap = await getDoc(docRef)
+            setUser(docSnap.data())
+
+        }catch (error){
+            console.log(error)
+
+        }
+
+    }
+
+    
+    useEffect(() =>{
+        
+        if(subId !== ''){
+            getOne(subId)
+        }
+
+
+    }, [subId])
+
+
 
     return (
         <div className='container'>
@@ -81,9 +112,6 @@ const Home = ({correoUsuario}) => {
                 Cerrar Sesion
             </button>
 
-            <button className='btn btn-primary' onClick={()=>signOut(auth)}>
-                Cerrar Sesion
-            </button>
 
             <hr />
 
@@ -91,19 +119,19 @@ const Home = ({correoUsuario}) => {
                 <div className='col-md-4'>
                     <h3 className='text-center mb-3'>Ingresar datos perfil</h3>
                     <form onSubmit={guardarDatos}>
-                        <div className='card card-body'>
+                        <div className='card sidecard-body'>
                             <div className='form-group'>
-                                <input type="text" name='nombre' className='form-control mb-3' placeholder='Ingresar nombre' onChange={capturarInputs} value={user.nombre}/>
+                                <input type="text" name='nombre' className='form-control' placeholder='Ingresar nombre' onChange={capturarInputs} value={user.nombre}/>
 
-                                <input type="text" name='apellido' className='form-control mb-3' placeholder='Ingresar apellido' onChange={capturarInputs} value={user.apellido}/>
+                                <input type="text" name='apellido' className='form-control' placeholder='Ingresar apellido' onChange={capturarInputs} value={user.apellido}/>
 
-                                <input type="text" name='username' className='form-control mb-3' placeholder='Ingresar nombre de usuario' onChange={capturarInputs} value={user.username}/>
+                                <input type="text" name='username' className='form-control' placeholder='Ingresar nombre de usuario' onChange={capturarInputs} value={user.username}/>
 
-                                <input type="text" name='juego' className='form-control mb*3' placeholder='Ingresar su juego preferido' onChange={capturarInputs} value={user.juego}/>
+                                <input type="text" name='juego' className='form-control' placeholder='Ingresar su juego preferido' onChange={capturarInputs} value={user.juego}/>
 
                             </div>
 
-                            <button className='btn btn-primary'>
+                            <button className='btn btn-secondary'>
                                 Guardar
                             </button>
 
@@ -130,6 +158,15 @@ const Home = ({correoUsuario}) => {
                                         <p>Descripcion: {list.descripcion}</p>
 
                                         <p>Videojuegos: {list.videojuegos}</p>
+
+                                        <button className='btn btn-danger' onClick={() =>deleteClub(list.id)}>
+                                         Eliminar Club
+                                        </button>                                        
+
+                                        <button className='btn btn-success m-1' onClick={() => setSubId(list.id)}>
+                                         Suscripcion
+                                        
+                                        </button>
                                         
                                         
                                     </div>
@@ -141,6 +178,7 @@ const Home = ({correoUsuario}) => {
                     </div>
 
                 </div>
+                
 
 
             </div>

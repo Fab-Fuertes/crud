@@ -1,0 +1,54 @@
+.row-container-p-4{
+    width: 420px;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, .2);
+}
+
+.mt5-ms5{
+    font-size: 18px;
+    text-align: center;
+}
+
+.row-container-p-4 .form-control{
+    position: relative; 
+    background: transparent;
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 30px;
+    padding: 20px 45px 20px 20px;
+}
+
+.button{
+    background: transparent;
+    font-size: 15px;
+    font-family: roboto condesed;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 30px;
+    padding: 5px 10px 5px 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    width: 60%;
+    font-weight: 700;
+    color: white
+}
+
+.button:hover{
+    background: green;
+}
+
+.mb-3 input::placeholder{
+    color: white;
+    font-family: roboto condesed;
+    font-size: 12px;
+}
+
+.form-group{
+    margin: 10px 0;
+}
+

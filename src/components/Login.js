@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-
-
 import appFirebase from '../credenciales';
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
+import './Login.css';
 
 
 const auth  = getAuth(appFirebase)
@@ -25,9 +24,9 @@ const Login = () =>{
     }
 
     return (
-      <div className="row container p-4">
+      <div className="row-container-p-4">
         <div className="col-md-4"></div>
-        <div className='mt=5 ms=5'>
+        <div className='mt5-ms5'>
             <h1>{registro ? 'registrate' :'inicia sesion' }</h1>
             <form onSubmit={handlerSubmit}>
                 <div className='mb-3'>
@@ -40,13 +39,13 @@ const Login = () =>{
                     <input type="password" className='form-control' placeholder='Ingresar contraseña' id='contraseña' required/>
                 </div>
 
-                <button className='btn btn-primary' type='submit'>
+                <button className='button' type='submit'>
                     {registro ? 'registrate': 'inicia sesion'}
                 </button>
             </form>
 
             <div className='form-group'>
-                <button className='btn btn-secondary mt-4 form-control' onClick= {() => setRegistro(!registro)}>
+                <button className='button' onClick= {() => setRegistro(!registro)}>
                     {registro ? 'ya tienes una cuenta? Inicia sesion': 'no tienes cuenta? Registrate'}
 
                 </button>

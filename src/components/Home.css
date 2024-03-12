@@ -1,0 +1,53 @@
+.container{
+    width: 1200px;
+    background: lightgrey;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, .2);
+}
+
+.btn-primary{
+    background: transparent;
+    font-family: roboto condesed;
+    font-size: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    width: 10%;
+}
+
+.btn-primary:hover{
+    background: red;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+    font-size: 20px;
+}
+
+.form-control{
+    border-radius: 10px;
+    margin: 10px 0;
+    font-size: 12px;
+}
+
+.btn-secondary{
+    background: transparent;
+    font-family: roboto condesed;
+    font-size: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-secondary:hover{
+    background: green;
+}
+
+.col-md-8{
+    margin-left: 20px;
+}
